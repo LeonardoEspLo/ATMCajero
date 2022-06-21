@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Banco</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <script src="mysql.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <header id="header">
+            <h3 class="header__item " id="header__tittle">
+                <span id="user-container">
+                    <img id="user__img" src="/resources/images/user.png" alt="">
+                    <h5 id="user__txt" class="font-white"><%= name %></h5>
+                </span>
+                Banco
+            </h3>
+        </header>
+
+        <div class="" id="container">
+
+            <div class="contador-container">
+                <p>Tiempo restante:</p><span id="contador"> </span>
+            </div>
+
+            <section class="section-retiro">
+                <h4 class="retiro-tittle">Maximo 50 billetes para ingresar</h4>
+
+            </section>
+            <div class="btn-left">
+                <form action="/depositando" method="POST">
+                    <button class="btn-back btn btn-dark btn-outline-white btn-lg px-5" type="submit" name="depositado" value="50">$50</button>
+                </form>
+                <form action="/depositando" method="POST">
+                    <button class="btn-impress btn btn-light btn-outline-white btn-lg px-5" type="submit" name="depositado" value="100">$100</button>
+                </form>
+                <form action="/depositando" method="POST">
+                    <button class="btn-action btn btn-primary btn-outline-white btn-lg px-5" type="submit" name="depositado" value="200">$200</button>
+                </form>
+            </div>
+            <div class="btn-right">
+                <form action="/depositando" method="POST">
+                    <button class="btn-back btn btn-dark btn-outline-white btn-lg px-5" type="submit" name="depositado" value="500">$500</button>
+                </form>
+                <form action="/depositando" method="POST">
+                    <button class="btn-impress btn btn-light btn-outline-white btn-lg px-5" type="submit" name="depositado" value="1000">$1000</button>
+                </form>
+                <a class="a-back" href="/"><button class="btn-back btn btn-primary btn-outline-white btn-lg px-5" type="submit">0 (Regresar)</button></a>
+            </div>
+
+        </div>
+
+
+    </div>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+        <% } %>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        window.onload = updateClock;
+
+        var totalTime = 120;
+
+        function updateClock() {
+            document.getElementById('contador').innerHTML = totalTime;
+            if (totalTime == 0) {
+                Swal.fire({
+                    title: 'Tiempo agotado',
+                    text: 'Se ha terminado el tiempo de espero, cerrando sesion...',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 2000
+                }).then(() => {
+                    window.location = 'logout'
+                })
+            } else {
+                totalTime -= 1;
+                setTimeout("updateClock()", 1000);
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

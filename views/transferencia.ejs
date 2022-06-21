@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Banco</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <script src="mysql.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <header id="header">
+            <h3 class="header__item " id="header__tittle">
+                <span id="user-container">
+                    <img id="user__img" src="/resources/images/user.png" alt="">
+                    <h5 id="user__txt" class="font-white"><%= name %></h5>
+                </span>
+                Banco
+            </h3>
+        </header>
+
+        <div class="" id="container">
+            <section class="section-transferencia">
+                <h4 class="retiro-tittle">Otra cantidad</h4>
+                    <form class="transferencia-container" action="/transfiriendo" method="POST">
+                       Numero de cuenta<input type="text" name="tarjeta">
+                       Monto<input type="text" name="monto">
+                        <button class="btn-impress btn btn-dark btn-outline-white btn-lg px-5" type="submit">Retirar</button>
+                    </form>
+            </section>
+            
+            <div class="btn-container-t">
+                <a class="a-back" href="/"><button class="btn-back btn btn-primary btn-outline-white btn-lg px-5" type="submit">Regresar</button></a>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+        <% } %>
+    <script src="js/bootstrap.min.js"></script>
+</body></html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+
+</head>
+
+<body>
+
+    <div id="main">
+
+        <header id="header">
+            <h3 class="header__item " id="header__tittle">
+                <span id="user-container">
+                    <img id="user__img" src="/resources/images/user.png" alt="">
+                    <% if(login) { %>
+                    <h5 id="user__txt" class="font-white"><%= name %></h5>
+                    <% } %>
+                </span>
+                Banco
+            </h3>
+        </header>
+
+
+        <div class="" id="container">
+
+
+
+            <section class="section-main">
+                <h3>Movimientos</h3>
+                <div class="menu">
+                    <a class="opcion opcion-1" href="/saldo"><img src="resources/images/saldo300px.png" alt="">
+                        <p>Consultar saldo</p>
+                    </a>
+                    <a class="opcion opcion-2" href="/retiro"><img src="resources/images/retiro300px.png" alt="">
+                        <p>Retiro</p>
+                    </a>
+                    <a class="opcion opcion-3" href="/deposito"><img src="resources/images/deposito300px.png" alt="">
+                        <p>Deposito</p>
+                    </a>
+                    <a class="opcion opcion-4" href="/transferencia"><img src="resources/images/transferencia300px.png" alt="">
+                        <p>Transferencia</p>
+                    </a>
+                </div>
+
+
+            </section>
+            <div class="btn-container-t">
+            <a class="a-back" href="logout"><button class="back btn btn-primary btn-outline-white btn-lg px-5" type="button">Cerrar sesion</button></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
